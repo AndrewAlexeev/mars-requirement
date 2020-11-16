@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+	<changeSet author="Alekseev A.V." id="202011161999">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="TECHNICAL_TASK_POINTS"/>
+
+			</not>
+		</preConditions>
+
+		<createTable remarks="Таблица пунктов ТЗ." tableName="TECHNICAL_TASK_POINTS">
+			<column name="NAME" remarks="Название пункта ТЗ." type="VARCHAR(18)">
+				<constraints nullable="false"/>
+			</column>
+
+
+			<column  name="ID"  type="int">
+				<constraints  primaryKey="true"  nullable="false"/>
+			</column>
+
+			<column  name="TECHNICAL_TASK_ID"  type="int">
+				<constraints  nullable="false"/>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseTableName="TECHNICAL_TASK_POINTS"
+								 baseColumnNames="TECHNICAL_TASK_ID"
+								 referencedTableName="TECHNICAL_TASKS"
+								 referencedColumnNames="ID"
+								 constraintName="FK_TECHNICAL_TASK_POINT_TASK"/>
+
+	</changeSet>
+
+	<changeSet author="Alekseev A.V." id="202011161920">
+
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<sequenceExists sequenceName="SEQ_TECHNICAL_TASK_POINTS_ID"/>
+			</not>
+		</preConditions>
+
+		<createSequence sequenceName="SEQ_TECHNICAL_TASK_POINTS_ID" startValue="100" incrementBy="10"/>
+
+	</changeSet>
+
+</databaseChangeLog>

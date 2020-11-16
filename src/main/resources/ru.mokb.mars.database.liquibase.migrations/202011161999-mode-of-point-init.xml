@@ -1,0 +1,54 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+	<changeSet author="Alekseev A.V." id="202011161999">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="MODE_OF_POINT"/>
+
+			</not>
+		</preConditions>
+
+		<createTable remarks="Таблица для отношения много ко многим режемы-пункты." tableName="MODE_OF_POINT">
+			<column name="POINT_ID" remarks="внешний ключ на пункт." type="int">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="MODE_ID" remarks="внешний ключ на режим." type="int">
+				<constraints nullable="false"/>
+			</column>
+
+			<column  name="ID"  type="int" autoIncrement="true">
+				<constraints  primaryKey="true"   nullable="false"/>
+			</column>
+
+		</createTable>
+
+		<addForeignKeyConstraint baseTableName="MODE_OF_POINT"
+								 baseColumnNames="MODE_ID"
+								 referencedTableName="MODES"
+								 referencedColumnNames="ID"
+								 constraintName="FK_MOP_MODES"/>
+
+		<addForeignKeyConstraint baseTableName="MODE_OF_POINT"
+								 baseColumnNames="POINT_ID"
+								 referencedTableName="TECHNICAL_TASK_POINTS"
+								 referencedColumnNames="ID"
+								 constraintName="FK_MOP_POINTS"/>
+
+	</changeSet>
+
+	<changeSet author="Alekseev A.V." id="202011161920">
+
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<sequenceExists sequenceName="SEQ_MODE_OF_POINT_ID"/>
+			</not>
+		</preConditions>
+
+		<createSequence sequenceName="SEQ_MODE_OF_POINT_ID" startValue="100" incrementBy="10"/>
+
+	</changeSet>
+
+</databaseChangeLog>
