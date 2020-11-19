@@ -1,6 +1,5 @@
 package ru.mokb.mars.requirements.rest.controllers;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +11,14 @@ import java.io.IOException;
 @RequestMapping(
 		path = "/"
 )
-public interface ActController {
+public interface ActController2 {
 
 	@ResponseBody
-	@PostMapping("/act")
+	@PostMapping("/act2")
 	byte[] addMode(@RequestBody Integer pimId) throws IOException;
 
 	@ResponseBody
-	@GetMapping("/acte")
+	@GetMapping("/acte2")
 	public byte[] addMode2();
 
 }
