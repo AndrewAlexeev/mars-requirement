@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class FetchObjectResponse {
-	private String name;
-	private Integer id;
+	private String officialName;
+	private String id;
 }

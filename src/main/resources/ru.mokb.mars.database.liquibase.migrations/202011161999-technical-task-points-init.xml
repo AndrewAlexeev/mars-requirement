@@ -20,16 +20,16 @@
 				<constraints  primaryKey="true"  nullable="false"/>
 			</column>
 
-			<column  name="TECHNICAL_TASK_ID"  type="int">
+			<column  name="TECHNICAL_TASK_SYSTEM_ID"  type="int">
 				<constraints  nullable="false"/>
 			</column>
 		</createTable>
 
 		<addForeignKeyConstraint baseTableName="TECHNICAL_TASK_POINTS"
-								 baseColumnNames="TECHNICAL_TASK_ID"
-								 referencedTableName="TECHNICAL_TASKS"
+								 baseColumnNames="TECHNICAL_TASK_SYSTEM_ID"
+								 referencedTableName="TECHNICAL_TASK_SYSTEM"
 								 referencedColumnNames="ID"
-								 constraintName="FK_TECHNICAL_TASK_POINT_TASK"/>
+								 constraintName="FK_TECHNICAL_TASK_SYSTEM_POINT_TASK"/>
 
 	</changeSet>
 

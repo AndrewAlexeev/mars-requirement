@@ -4,8 +4,10 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 <!--	<include relativeToChangelogFile="true" file="202011161999-objects-init.xml"/>-->
-<!--	<include relativeToChangelogFile="true" file="202011161999-technical-task-init.xml"/>-->
-<!--	<include relativeToChangelogFile="true" file="202011161999-pims-init.xml"/>-->
+	<include relativeToChangelogFile="true" file="202011161999-technical-task-init.xml"/>
+	<include relativeToChangelogFile="true" file="202011161999-technical-task-system-init.xml"/>
+
+	<!--	<include relativeToChangelogFile="true" file="202011161999-pims-init.xml"/>-->
 <!--	<include relativeToChangelogFile="true" file="202011161999-modes-init.xml"/>-->
 <!--	<include relativeToChangelogFile="true" file="202011161999-mode-of-pim-init.xml"/>-->
 	<include relativeToChangelogFile="true" file="202011161999-technical-task-points-init.xml"/>

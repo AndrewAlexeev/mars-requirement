@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class FetchTechnicalTaskPointsResponse {
-	private List<FetchTechnicalTaskPointResponse> points;
+public class FetchModesResponse {
+	private List<FetchModeResponse> modes;
 }

@@ -24,6 +24,6 @@ public class TechnicalTaskPoint {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name="technical_task_id", nullable=false)
-	private TechnicalTask technicalTask;
+	@JoinColumn(name="technical_task_system_id", nullable=false)
+	private TechnicalTaskSystem technicalTaskSystem;
 }

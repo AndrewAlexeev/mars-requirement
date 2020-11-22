@@ -29,9 +29,9 @@ public class TechnicalTask {
 
 	@ManyToOne
 	@JoinColumn(name="object_id", nullable=false)
-	private Object object;
+	private LAObject LAObject;
 
 	@OneToMany(mappedBy = "technicalTask")
-	private List<TechnicalTaskPoint> technicalTaskPointListList = new ArrayList<>();
+	private List<TechnicalTaskSystem> technicalTaskSystems = new ArrayList<>();
 
 }

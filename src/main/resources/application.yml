@@ -5,22 +5,23 @@ spring:
   application:
     name: mars-requrement
 
-#  jpa:
+  jpa:
 #    properties:
 #      hibernate:
 #        dialect: org.hibernate.dialect.PostgreSQL9Dialect
 #        format_sql: false
-#    show-sql: false
-#    hibernate:
+#        show-sql: true
+      hibernate:
 #      ddl-auto: none
-#      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#    generate-ddl: false
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      show-sql: false
+  #    generate-ddl: false
 #    open-in-view: false
   datasource:
     ### [datasources]
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=mokb}
-    jdbc-url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=mokb}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=public}
+    jdbc-url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=public}
     username: ${DATASOURCE_USERNAME:postgres}
     password: ${DATASOURCE_PASSWORD:post}
     driverClassName: ${DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
@@ -36,4 +37,4 @@ spring:
 
 
 saveFilePath: /home/andrew/foto/
-templatePath: classpath:ru.mokb.mars.template/act.txt
+templatePath: classpath:ru.mokb.mars.template/act.docx

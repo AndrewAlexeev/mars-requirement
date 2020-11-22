@@ -11,7 +11,7 @@
 		</preConditions>
 
 		<createTable remarks="Таблица технических заданий." tableName="TECHNICAL_TASKS">
-			<column name="NAME" remarks="Название технического задания." type="VARCHAR(18)">
+			<column name="NAME" remarks="Название технического задания." type="VARCHAR(255)">
 				<constraints nullable="false"/>
 			</column>
 
@@ -23,17 +23,28 @@
 				<constraints  primaryKey="true"  nullable="false"/>
 			</column>
 
-			<column  name="OBJECT_ID"  type="int">
+			<column  name="OBJECT_ID"  type="text">
 				<constraints  nullable="false"/>
 			</column>
 		</createTable>
 
+
+
+	</changeSet>
+
+	<changeSet author="Alekseev A.V." id="202011161921">
+
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="FK_TECHNICAL_TASK_OBJECT"/>
+			</not>
+		</preConditions>
+
 		<addForeignKeyConstraint baseTableName="TECHNICAL_TASKS"
 								 baseColumnNames="OBJECT_ID"
-								 referencedTableName="OBJECTS"
-								 referencedColumnNames="ID"
+								 referencedTableName="Объекты"
+								 referencedColumnNames="Объект"
 								 constraintName="FK_TECHNICAL_TASK_OBJECT"/>
-
 	</changeSet>
 
 	<changeSet author="Alekseev A.V." id="202011161920">

@@ -27,8 +27,8 @@
 
 		<addForeignKeyConstraint baseTableName="MODE_OF_POINT"
 								 baseColumnNames="MODE_ID"
-								 referencedTableName="MODES"
-								 referencedColumnNames="ID"
+								 referencedTableName="Режимы"
+								 referencedColumnNames="Идентификатор режима"
 								 constraintName="FK_MOP_MODES"/>
 
 		<addForeignKeyConstraint baseTableName="MODE_OF_POINT"

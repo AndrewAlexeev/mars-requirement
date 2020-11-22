@@ -20,15 +20,15 @@ import java.io.IOException;
 public interface TechnicalTasksController {
 
 	@ResponseBody
-	@PostMapping("/technical-task")
-	Integer addTechnicalTask(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, @RequestParam("objectId") Integer objectId);
+	@PostMapping("/technicalTask")
+	Integer addTechnicalTask(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, @RequestParam("objectId") String objectId) throws Exception;
 
 	@ResponseBody
-	@GetMapping("/technical-tasks")
-	FetchTechnicalTasksResponse fetchTechnicalTasks();
+	@GetMapping("/technicalTasks")
+	FetchTechnicalTasksResponse fetchTechnicalTasks(@RequestParam("objectId") String objectId);
 
-	@RequestMapping("/technical-task/download")
-	public ResponseEntity<InputStreamResource> downloadFile(@RequestBody TechnicalTaskFetchFileRequest technicalTaskFetchFileRequest) throws IOException;
+	@RequestMapping("/technicalTask/download")
+	public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("technicalTaskId") Integer technicalTask) throws IOException;
 
 }
 
