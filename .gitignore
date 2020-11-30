@@ -23,6 +23,7 @@ logs
 *.settings*
 .classpath
 *.iml
+*.uml
 .externalToolBuilders
 *.ipr
 *.iws
