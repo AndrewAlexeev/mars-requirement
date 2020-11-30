@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 
 @RequestMapping(
-		path = "/"
+		path = "/api"
 )
 public interface ActController {
 

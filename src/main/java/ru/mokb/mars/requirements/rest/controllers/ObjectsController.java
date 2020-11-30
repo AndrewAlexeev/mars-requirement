@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.mokb.mars.requirements.rest.responses.FetchObjectsResponse;
 
 @RequestMapping(
-		path = "/",
+		path = "/api",
 		produces = MediaType.APPLICATION_JSON_VALUE
 )
 public interface ObjectsController {

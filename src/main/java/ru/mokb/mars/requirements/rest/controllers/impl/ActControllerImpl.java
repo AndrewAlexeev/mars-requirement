@@ -18,10 +18,12 @@ import pl.jsolve.templ4docx.variable.Variables;
 import ru.mokb.mars.requirements.database.DepartmentJpaRepository;
 import ru.mokb.mars.requirements.database.DepartmentSubsystemJpaRepository;
 import ru.mokb.mars.requirements.database.PIMJpaRepository;
+import ru.mokb.mars.requirements.database.ResultJpaRepository;
 import ru.mokb.mars.requirements.database.SubsystemJpaRepository;
 import ru.mokb.mars.requirements.database.model.Department;
 import ru.mokb.mars.requirements.database.model.DepartmentSubsystem;
 import ru.mokb.mars.requirements.database.model.PIM;
+import ru.mokb.mars.requirements.database.model.Result;
 import ru.mokb.mars.requirements.database.model.Subsystem;
 import ru.mokb.mars.requirements.rest.controllers.ActController;
 
@@ -42,6 +44,7 @@ public class ActControllerImpl implements ActController {
 	private final SubsystemJpaRepository subsystemJpaRepository;
 	private final DepartmentSubsystemJpaRepository departmentSubsystemJpaRepository;
 	private final DepartmentJpaRepository departmentJpaRepository;
+	private final ResultJpaRepository resultJpaRepository;
 
 	private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("YYYY-MM");
 
@@ -73,16 +76,33 @@ public class ActControllerImpl implements ActController {
 		pim.getModes().forEach(mode -> {
 
 			List<Variable> points = new ArrayList<>();
+			List<Variable> results = new ArrayList<>();
+
+
 			mode.getTechnicalTaskPoints()
-					.stream().filter(point -> {
-				Integer pointSubsystemId = point.getTechnicalTaskSystem().getSubsystem().getId();
-				return subsystemId.equals(pointSubsystemId);
-			})
-					.forEach(point -> points.add(new TextVariable("${points}", point.getName())));
+					.stream()
+					.filter(point -> {
+						Integer pointSubsystemId = point.getTechnicalTaskSystem().getSubsystem().getId();
+						return subsystemId.equals(pointSubsystemId);
+					})
+					.forEach(point -> {
+						points.add(new TextVariable("${points}", point.getName()));
+						Integer pointId = point.getId();
+						Double modeId = mode.getId();
+						Integer id = resultJpaRepository.findModePointIdByModeAndPoint(modeId, pointId);
+						Result result = resultJpaRepository.findByModePointId(id).orElseGet(() -> {
+							Result result1 = new Result();
+							result1.setBody("");
+							return result1;
+						});
+						results.add(new TextVariable("${result}", result.getBody()));
+					});
+
 
 			if (!CollectionUtils.isEmpty(points)) {
 				modeColumnVariables.add(new TextVariable("${mode}", mode.getSimulatedMode()));
-				resultColumnVariables.add(new TextVariable("${result}", "тестовый результат"));
+				resultColumnVariables.add(new BulletListVariable("${result}", results));
+
 				points.add(new TextVariable("${points}", ""));
 				pointsColumnVariables.add(new BulletListVariable("${points}", points));
 			}

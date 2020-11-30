@@ -10,7 +10,7 @@ import ru.mokb.mars.requirements.rest.requests.TechnicalTaskPointAddRequest;
 import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTaskPointsResponse;
 
 @RequestMapping(
-		path = "/"
+		path = "/api"
 )
 public interface TechnicalTaskPointsController {
 

@@ -15,7 +15,7 @@ import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTasksResponse;
 import java.io.IOException;
 
 @RequestMapping(
-		path = "/"
+		path = "/api"
 )
 public interface TechnicalTasksController {
 

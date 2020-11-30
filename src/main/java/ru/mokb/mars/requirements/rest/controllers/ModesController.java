@@ -11,7 +11,7 @@ import ru.mokb.mars.requirements.rest.requests.FetchModesRequest;
 import ru.mokb.mars.requirements.rest.responses.FetchModesResponse;
 
 @RequestMapping(
-		path = "/",
+		path = "/api",
 		produces = MediaType.APPLICATION_JSON_VALUE)
 public interface ModesController {
 

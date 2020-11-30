@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.mokb.mars.requirements.rest.responses.FetchPimsResponse;
 
 @RequestMapping(
-		path = "/",
+		path = "/api",
 		produces = MediaType.APPLICATION_JSON_VALUE,
 		consumes = MediaType.APPLICATION_JSON_VALUE
 )

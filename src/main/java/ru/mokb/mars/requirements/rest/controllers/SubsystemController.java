@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.mokb.mars.requirements.rest.responses.FetchSubsystemsResponse;
 
 @RequestMapping(
-		path = "/"
+		path = "/api"
 )
 public interface SubsystemController {
 

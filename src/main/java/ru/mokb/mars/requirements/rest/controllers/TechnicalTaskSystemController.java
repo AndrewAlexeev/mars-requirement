@@ -9,7 +9,7 @@ import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTaskSystemsRespons
 import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTasksResponse;
 
 @RequestMapping(
-		path = "/"
+		path = "/api"
 )
 public interface TechnicalTaskSystemController {
 

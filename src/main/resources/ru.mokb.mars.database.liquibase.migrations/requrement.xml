@@ -12,6 +12,8 @@
 <!--	<include relativeToChangelogFile="true" file="202011161999-mode-of-pim-init.xml"/>-->
 	<include relativeToChangelogFile="true" file="202011161999-technical-task-points-init.xml"/>
 	<include relativeToChangelogFile="true" file="202011161999-mode-of-point-init.xml"/>
+	<include relativeToChangelogFile="true" file="202011161999-results-init.xml"/>
+
 
 </databaseChangeLog>
 
