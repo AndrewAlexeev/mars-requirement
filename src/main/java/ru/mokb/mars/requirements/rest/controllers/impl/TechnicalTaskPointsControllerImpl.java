@@ -5,10 +5,14 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.mokb.mars.requirements.database.ModeJpaRepository;
 import ru.mokb.mars.requirements.database.TechnicalTaskPointJpaRepository;
 import ru.mokb.mars.requirements.database.TechnicalTaskSystemJpaRepository;
+import ru.mokb.mars.requirements.database.model.BoundingRect;
 import ru.mokb.mars.requirements.database.model.Mode;
+import ru.mokb.mars.requirements.database.model.Position;
 import ru.mokb.mars.requirements.database.model.TechnicalTaskPoint;
 import ru.mokb.mars.requirements.database.model.TechnicalTaskSystem;
 import ru.mokb.mars.requirements.rest.controllers.TechnicalTaskPointsController;
+import ru.mokb.mars.requirements.rest.requests.BoundingRectRequest;
+import ru.mokb.mars.requirements.rest.requests.PositionRequest;
 import ru.mokb.mars.requirements.rest.requests.TechnicalTaskPointAddRequest;
 import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTaskPointResponse;
 import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTaskPointsResponse;
@@ -31,6 +35,8 @@ public class TechnicalTaskPointsControllerImpl implements TechnicalTaskPointsCon
 		TechnicalTaskPoint technicalTaskPoint = new TechnicalTaskPoint();
 		technicalTaskPoint.setName(technicalTaskPointAddRequest.getName());
 		technicalTaskPoint.setTechnicalTaskSystem(technicalTaskSystem);
+		Position position = preparePosition(technicalTaskPointAddRequest.getPosition());
+		technicalTaskPoint.setPosition(position);
 		List<Mode> modes = modeJpaRepository.findAllById(technicalTaskPointAddRequest.getModes());
 
 		TechnicalTaskPoint savedTechnicalTaskPoint = technicalTaskPointJpaRepository.save(technicalTaskPoint);
@@ -39,6 +45,23 @@ public class TechnicalTaskPointsControllerImpl implements TechnicalTaskPointsCon
 		modeJpaRepository.saveAll(modes);
 
 		return savedTechnicalTaskPoint.getId();
+	}
+
+	private Position preparePosition(PositionRequest positionRequest) {
+		Position position = new Position();
+		if (positionRequest != null) {
+			position.setPageNumber(positionRequest.getPageNumber());
+			BoundingRectRequest boundingRectRequest = positionRequest.getBoundingRect();
+			BoundingRect boundingRect = new BoundingRect();
+			boundingRect.setX1(boundingRectRequest.getX1());
+			boundingRect.setX2(boundingRectRequest.getX2());
+			boundingRect.setY1(boundingRectRequest.getY1());
+			boundingRect.setY2(boundingRectRequest.getY2());
+			boundingRect.setHeight(boundingRectRequest.getHeight());
+			boundingRect.setWidth(boundingRectRequest.getWidth());
+			position.setBoundingRect(boundingRect);
+		}
+		return position;
 	}
 
 	@Override

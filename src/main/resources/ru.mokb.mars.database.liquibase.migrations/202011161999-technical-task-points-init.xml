@@ -23,6 +23,10 @@
 			<column  name="TECHNICAL_TASK_SYSTEM_ID"  type="int">
 				<constraints  nullable="false"/>
 			</column>
+
+			<column name="POSITION" type="CLOB">
+				<constraints nullable="false"/>
+			</column>
 		</createTable>
 
 		<addForeignKeyConstraint baseTableName="TECHNICAL_TASK_POINTS"

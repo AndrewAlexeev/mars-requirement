@@ -15,4 +15,6 @@ public class TechnicalTaskPointAddRequest {
 	private Integer technicalTaskSystemId;
 	@NotEmpty
 	private List<Double> modes;
+
+	private PositionRequest position;
 }
