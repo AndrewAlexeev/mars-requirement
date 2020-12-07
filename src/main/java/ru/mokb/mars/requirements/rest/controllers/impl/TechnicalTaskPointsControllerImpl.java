@@ -34,6 +34,7 @@ public class TechnicalTaskPointsControllerImpl implements TechnicalTaskPointsCon
 		TechnicalTaskSystem technicalTaskSystem = technicalTaskSystemJpaRepository.findById(technicalTaskPointAddRequest.getTechnicalTaskSystemId()).orElseThrow();
 		TechnicalTaskPoint technicalTaskPoint = new TechnicalTaskPoint();
 		technicalTaskPoint.setName(technicalTaskPointAddRequest.getName());
+		technicalTaskPoint.setDescription(technicalTaskPointAddRequest.getDescription());
 		technicalTaskPoint.setTechnicalTaskSystem(technicalTaskSystem);
 		Position position = preparePosition(technicalTaskPointAddRequest.getPosition());
 		technicalTaskPoint.setPosition(position);

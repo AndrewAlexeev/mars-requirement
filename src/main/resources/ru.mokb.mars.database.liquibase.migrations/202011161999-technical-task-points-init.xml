@@ -15,7 +15,9 @@
 				<constraints nullable="false"/>
 			</column>
 
-
+			<column name="DESCRIPTION" remarks="Описание пункта ТЗ." type="TEXT">
+				<constraints nullable="false"/>
+			</column>
 			<column  name="ID"  type="int">
 				<constraints  primaryKey="true"  nullable="false"/>
 			</column>

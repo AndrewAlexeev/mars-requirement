@@ -11,6 +11,8 @@ import java.util.List;
 public class TechnicalTaskPointAddRequest {
 	@NotBlank
 	private String name;
+	@NotBlank
+	private String description;
 	@NotNull
 	private Integer technicalTaskSystemId;
 	@NotEmpty

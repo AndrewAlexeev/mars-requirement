@@ -35,4 +35,8 @@ public class TechnicalTaskPoint {
 	@Convert(converter = PositionConverter.class)
 	@Column(name = "POSITION", nullable = false)
 	private Position position;
+
+	private String description;
+
+
 }

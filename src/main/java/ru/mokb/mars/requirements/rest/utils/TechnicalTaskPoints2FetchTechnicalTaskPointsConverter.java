@@ -34,6 +34,7 @@ public class TechnicalTaskPoints2FetchTechnicalTaskPointsConverter {
 		FetchTechnicalTaskPointResponse fetchTechnicalTaskPointResponse = new FetchTechnicalTaskPointResponse();
 		fetchTechnicalTaskPointResponse.setId(technicalTaskPoint.getId());
 		fetchTechnicalTaskPointResponse.setName(technicalTaskPoint.getName());
+		fetchTechnicalTaskPointResponse.setDescription(technicalTaskPoint.getDescription());
 
 		fetchTechnicalTaskPointResponse.setPosition(convertPosition(technicalTaskPoint.getPosition()));
 		return fetchTechnicalTaskPointResponse;
