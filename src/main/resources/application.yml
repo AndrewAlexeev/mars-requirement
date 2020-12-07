@@ -39,4 +39,4 @@ spring:
 
 
 saveFilePath: /home/andrew/foto/
-templatePath: classpath:ru.mokb.mars.template/act.docx
+templatePath: classpath:ru.mokb.mars.template/act2.docx
