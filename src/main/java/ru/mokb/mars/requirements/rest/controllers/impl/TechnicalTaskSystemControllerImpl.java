@@ -10,9 +10,7 @@ import ru.mokb.mars.requirements.database.model.TechnicalTask;
 import ru.mokb.mars.requirements.database.model.TechnicalTaskSystem;
 import ru.mokb.mars.requirements.rest.controllers.TechnicalTaskSystemController;
 import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTaskSystemsResponse;
-import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTasksResponse;
-
-import java.util.List;
+import ru.mokb.mars.requirements.rest.utils.TechnicalTaskSystems2FetchTechnicalTaskSystemsConverter;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,17 +26,13 @@ public class TechnicalTaskSystemControllerImpl implements TechnicalTaskSystemCon
 		TechnicalTask technicalTask = technicalTaskJpaRepository.findById(technicalTaskId).orElseThrow();
 		technicalTaskSystem.setSubsystem(subsystem);
 		technicalTaskSystem.setTechnicalTask(technicalTask);
-		TechnicalTaskSystem savedTechnicalTaskSystem= technicalTaskSystemJpaRepository.save(technicalTaskSystem);
+		TechnicalTaskSystem savedTechnicalTaskSystem = technicalTaskSystemJpaRepository.save(technicalTaskSystem);
 		return savedTechnicalTaskSystem.getId();
 	}
 
 	@Override
 	public FetchTechnicalTaskSystemsResponse fetchTechnicalTaskSystem(Integer technicalTaskId) {
 		TechnicalTask technicalTask = technicalTaskJpaRepository.findById(technicalTaskId).orElseThrow();
-		List<TechnicalTaskSystem> technicalTaskSystemList = technicalTaskSystemJpaRepository.findAllByTechnicalTask(technicalTask);
-
-		FetchTechnicalTaskSystemsResponse fetchTechnicalTaskSystemsResponse = new FetchTechnicalTaskSystemsResponse();
-
-		return fetchTechnicalTaskSystemsResponse;
+		return TechnicalTaskSystems2FetchTechnicalTaskSystemsConverter.convert(technicalTask.getTechnicalTaskSystems());
 	}
 }

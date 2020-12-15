@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTaskSystemsResponse;
-import ru.mokb.mars.requirements.rest.responses.FetchTechnicalTasksResponse;
 
 @RequestMapping(
 		path = "/api"

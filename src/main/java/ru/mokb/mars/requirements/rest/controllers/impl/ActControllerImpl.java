@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.jsolve.templ4docx.core.Docx;
 import pl.jsolve.templ4docx.core.VariablePattern;
 import pl.jsolve.templ4docx.variable.BulletListVariable;
+import pl.jsolve.templ4docx.variable.ImageVariable;
 import pl.jsolve.templ4docx.variable.TableVariable;
 import pl.jsolve.templ4docx.variable.TextVariable;
 import pl.jsolve.templ4docx.variable.Variable;
